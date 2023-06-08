@@ -3,9 +3,15 @@
 ```
 docker run -d --rm -it -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=db -ePOSTGRES_USER=postgres -p 5433:5432 --name pg postgres:14.6-alpine3.17
 npm install
+
+# this works
 set -a && source ./.env && ts-node src/foo.ts
 # Returns ('starelid' might be different for you)
 # Result(1) [ { starelid: 1247 } ]
+
+# this DOES NOT work in a ts-node REPL:
+> foo = await import('./src/foo.ts')
+> foo = await import('./src/foo')
 ```
 
 ## Details
